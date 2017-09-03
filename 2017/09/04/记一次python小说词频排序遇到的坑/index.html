@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//yanglixin.me">
-  <title>Archives: 2017/9 | lasse的博客</title>
+  <title>记一次python小说词频排序遇到的坑 | lasse的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术 Python Android">
-<meta name="keywords" content="随笔,爱生活,Kotlin,Java,移动端,Android,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,用户体验,自定义控件">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lasse的博客">
-<meta property="og:url" content="//yanglixin.me/archives/2017/09/index.html">
+  <meta name="description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
+<meta name="keywords" content="jieba 统计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次python小说词频排序遇到的坑">
+<meta property="og:url" content="//yanglixin.me/2017/09/04/记一次python小说词频排序遇到的坑/index.html">
 <meta property="og:site_name" content="lasse的博客">
-<meta property="og:description" content="技术 Python Android">
+<meta property="og:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
+<meta property="og:image" content="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png">
+<meta property="og:updated_time" content="2017-09-03T16:44:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lasse的博客">
-<meta name="twitter:description" content="技术 Python Android">
+<meta name="twitter:title" content="记一次python小说词频排序遇到的坑">
+<meta name="twitter:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
+<meta name="twitter:image" content="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png">
   
     <link rel="alternative" href="/atom.xml" title="lasse的博客" type="application/atom+xml">
   
@@ -141,36 +144,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-记一次python小说词频排序遇到的坑" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/04/记一次python小说词频排序遇到的坑/" class="archive-article-date">
-  	<time datetime="2017-09-03T16:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/记一次python小说词频排序遇到的坑/">记一次python小说词频排序遇到的坑</a>
+    <h1 class="article-title" itemprop="name">
+      记一次python小说词频排序遇到的坑
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/04/记一次python小说词频排序遇到的坑/" class="archive-article-date">
+  	<time datetime="2017-09-03T16:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~<img src="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png" alt="quanzhi_tongji"></p>
+<p><pre><br><code>word_dict = {}
+num1 = 0
+with open(&#39;36.txt&#39;, &#39;r&#39;) as f, open(&#39;tongjitext.txt&#39;, &#39;w&#39;) as tongji:
+    print(&quot;开始读取小说......&quot;)
+    words = list(jieba.cut(f.read()))
+    print(&quot;小说读取完毕......&quot;)</code></pre><br> 其中，jieba.cut()方法传入需要要解析的文本；返回的是一个生成器对象（generator）转换成列表文件以便我们遍历。<br> <pre><code>for word in words:
+    if len(word) &gt; 1:
+        if word not in word_dict:
+            word_dict[word] = 1
+        else:
+            word_dict[word] += 1</code></pre><br> 如果未在字典中出现过则为字典创建一个key，value=1表示出现一次，<br> 否则出现过则++</p>
+<p>####上面的都不算坑<br> 坑在这<pre><code>word_dict_copy = sorted(word_dict.items(), key=lambda d: d[1], reverse=True)</code></pre><br> 根据字典的value值，也就是频次排序生成一个新的“字典”<br><br> 生成的其实不是字典（我以为是字典），是一个元素为元组的数组。<br><br> 而且我用的是3.6的python，排序跟2.x也有一点细微的差别，就不能兼容下么0 0。<br><br> 而且python的优点（对象没有类型，可以实现大佬口中的某些黑魔法）对新手来说还是不太友好的<br><br> 不过实现了总是好的<br><br> python新手，这坑得慢慢踩了 哈哈~</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/ali_pay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/wx_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,7 +227,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -198,110 +243,102 @@
 
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yanglixin.me/2017/09/04/记一次python小说词频排序遇到的坑/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/记一次去十渡的漂流经历/" class="archive-article-date">
-  	<time datetime="2017-09-03T03:51:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/03/记一次去十渡的漂流经历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一次去十渡的漂流经历</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/记一次去十渡的漂流经历/">记一次去十渡的漂流经历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">团建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/闲谈/" class="article-tag-list-link color3">闲谈</a>
-        		</li>
-      		
-		</ul>
-		
-	</div>
+        
+        
+    </div>
+</aside>
 
 
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-02T16:16:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔/" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-		
-	</div>
-
-
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -331,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
