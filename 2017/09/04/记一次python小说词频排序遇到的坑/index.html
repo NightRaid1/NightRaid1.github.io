@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//yanglixin.me">
-  <title>记一次python小说词频排序遇到的坑 | lasse的博客</title>
+  <title>记一次python小说词频排序遇到的小麻烦 | lasse的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
-<meta name="keywords" content="jieba 统计">
+  <meta name="description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0  with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     prin">
+<meta name="keywords" content="jieba,统计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次python小说词频排序遇到的坑">
+<meta property="og:title" content="记一次python小说词频排序遇到的小麻烦">
 <meta property="og:url" content="//yanglixin.me/2017/09/04/记一次python小说词频排序遇到的坑/index.html">
 <meta property="og:site_name" content="lasse的博客">
-<meta property="og:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
+<meta property="og:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0  with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     prin">
 <meta property="og:image" content="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png">
-<meta property="og:updated_time" content="2017-09-03T16:44:48.000Z">
+<meta property="og:updated_time" content="2017-09-03T16:57:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次python小说词频排序遇到的坑">
-<meta name="twitter:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0 with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     print">
+<meta name="twitter:title" content="记一次python小说词频排序遇到的小麻烦">
+<meta name="twitter:description" content="心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~ word_dict = {} num1 = 0  with open(&amp;#39;36.txt&amp;#39;, &amp;#39;r&amp;#39;) as f, open(&amp;#39;tongjitext.txt&amp;#39;, &amp;#39;w&amp;#39;) as tongji:     prin">
 <meta name="twitter:image" content="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png">
   
     <link rel="alternative" href="/atom.xml" title="lasse的博客" type="application/atom+xml">
@@ -151,7 +151,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      记一次python小说词频排序遇到的坑
+      记一次python小说词频排序遇到的小麻烦
     </h1>
   
 
@@ -166,7 +166,7 @@
       
         <p>心血来潮想用python统计下《全职高手》中哪些词汇出现的频率高，结果如下。（用到的模块：jieba）ps：果然我叶修男神第一~<img src="http://ovonz0c44.bkt.clouddn.com/quanzhi_tongji.png" alt="quanzhi_tongji"></p>
 <p><pre><br><code>word_dict = {}
-num1 = 0
+num1 = 0 
 with open(&#39;36.txt&#39;, &#39;r&#39;) as f, open(&#39;tongjitext.txt&#39;, &#39;w&#39;) as tongji:
     print(&quot;开始读取小说......&quot;)
     words = list(jieba.cut(f.read()))
@@ -175,8 +175,8 @@ with open(&#39;36.txt&#39;, &#39;r&#39;) as f, open(&#39;tongjitext.txt&#39;, &#
         if word not in word_dict:
             word_dict[word] = 1
         else:
-            word_dict[word] += 1</code></pre><br> 如果未在字典中出现过则为字典创建一个key，value=1表示出现一次，<br> 否则出现过则++</p>
-<p>####上面的都不算坑<br> 坑在这<pre><code>word_dict_copy = sorted(word_dict.items(), key=lambda d: d[1], reverse=True)</code></pre><br> 根据字典的value值，也就是频次排序生成一个新的“字典”<br><br> 生成的其实不是字典（我以为是字典），是一个元素为元组的数组。<br><br> 而且我用的是3.6的python，排序跟2.x也有一点细微的差别，就不能兼容下么0 0。<br><br> 而且python的优点（对象没有类型，可以实现大佬口中的某些黑魔法）对新手来说还是不太友好的<br><br> 不过实现了总是好的<br><br> python新手，这坑得慢慢踩了 哈哈~</p>
+            word_dict[word] += 1</code></pre><br> 只获取长度大于1的字符串（避免统计我，你这类的词）<br><br> 如果未在字典中出现过则为字典创建一个key并且设置value=1表示出现一次。<br> 否则出现过则++</p>
+<p>####上面的都不算坑<br> 麻烦在这<pre><code>word_dict_copy = sorted(word_dict.items(), key=lambda d: d[1], reverse=True)</code></pre><br> 根据字典的value值，也就是频次排序生成一个新的“字典”<br><br> 生成的其实不是字典（我以为是字典0 0），是一个元素为元组的数组。<br><br> 而且我用的是3.6的python，排序跟2.x也有一点细微的差别，就不能兼容下么，心塞塞。<br><br> 不过实现了总是好的<br><br> 主要目的是记录下，毕竟 写 &gt; 读 &gt; 想<br><br> python新手，这坑得慢慢踩了 哈哈~</p>
 
       
 
@@ -221,7 +221,7 @@ with open(&#39;36.txt&#39;, &#39;r&#39;) as f, open(&#39;tongjitext.txt&#39;, &#
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jieba 统计</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jieba,统计</a>
         		</li>
       		
 		</ul>
@@ -430,7 +430,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jieba 统计</a>
+                <a href="javascript:void(0)" class="js-tag color4">jieba,统计</a>
               </li>
              
               <li class="article-tag-list-item">
