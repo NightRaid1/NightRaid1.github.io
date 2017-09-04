@@ -150,7 +150,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/04/记一次python小说词频排序遇到的坑/">记一次用python给小说词频排序遇到的小麻烦</a>
+      <a class="article-title" href="/2017/09/04/记一次python小说词频排序遇到的坑/">python3.6 根据字典的value值进行倒序排列</a>
     </h1>
   
 
@@ -176,7 +176,7 @@ with open(&#39;36.txt&#39;, &#39;r&#39;) as f, open(&#39;tongjitext.txt&#39;, &#
         else:
             word_dict[word] += 1</code></pre><br> 只获取长度大于1的字符串（避免统计我，你这类的词）<br><br> 如果未在字典中出现过则为字典创建一个key并且设置value=1表示出现一次。<br> 否则出现过则++</p>
 <p> 麻烦在这<pre><code>word_dict_copy = sorted(word_dict.items(), key=lambda d: d[1], reverse=True)</code></pre><br> <del>根据字典的value值，也就是频次排序生成一个新的“字典”（开始不知道返回的是什么，潜意识的认为是字典）<br><br> 生成的其实不是字典，是一个元素为元组的数组(我print type了)。<br><br> </del></p>
-<p>#####9月4日凌晨更新<br>sorded返回的数据一定是一个数组list，里面承载着什么类型的元素取决于sorded方法的第一个参数中元素的类型！！！<br><img src="http://ovonz0c44.bkt.clouddn.com/sored_.png" alt="img1"><br><img src="http://ovonz0c44.bkt.clouddn.com/sored_1.png" alt="img2"></p>
+<p>#####9月4日凌晨更新<br>sorded返回的数据一定是一个数组list，里面承载着什么类型的元素取决于sorded方法的第一个参数中元素的类型<br><img src="http://ovonz0c44.bkt.clouddn.com/sored_.png" alt="img1"><br><img src="http://ovonz0c44.bkt.clouddn.com/sored_1.png" alt="img2"></p>
 <p> 而且我用的是3.6的python，排序跟2.x也有一点细微的差别，就不能兼容下么，心塞塞。<br><br> 最后的代码写入文件（之后可能会用制表模块来显示）：<pre><code>for key in word_list:
         num1 = num1 + 1
         print(key[0], key[1])
